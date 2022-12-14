@@ -12,7 +12,6 @@ func IsDigit(str string) bool {
 	return ret
 }
 
-
 func IsPositiveNumber(src string) bool {
 	var number = regexp.MustCompile("^[\\d]*$")
 	return number.MatchString(src)
