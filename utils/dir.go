@@ -14,5 +14,15 @@ func GetAppBaseDir() string {
 	name := filepath.Base(file)
 	appDir := strings.TrimRight(fpath, name)
 	//fmt.Println("[BaseDir]", appDir)
+
+	// appDir := filepath.Base(os.Args[0])
 	return appDir
+}
+
+func IsPathExisting(path string) bool {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true
+	}
+	return os.IsExist(err)
 }
