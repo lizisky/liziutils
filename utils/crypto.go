@@ -40,9 +40,9 @@ func HexDecode(in string) []byte {
 	return decoded
 }
 
-func Sha256(in string) string {
-	encode := sha256.Sum256([]byte(in))
-	return HexEncode(encode[:])
+func Sha256(indata []byte) string {
+	encode := sha256.Sum256((indata))
+	return hex.EncodeToString(encode[:])
 }
 
 // AesEncrypt
