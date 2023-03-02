@@ -42,3 +42,38 @@ func Timestamp13ToDate(timestamp int64) time.Time {
 func GetFormatDateNow() string {
 	return time.Now().UTC().Format("2006-01-02 15:04:05")
 }
+
+// 计算一个指定时间的前、后边界时间
+// 这里的边界时间是指：以半天为单位，
+// 如果是上午，beginTime为0点，engTime为12点
+// 如果是上午，beginTime为12点，engTime为24点
+// @param inTime 这个是millsecond, 13位整数
+// return value 也是13位整数的 millsecond
+func CalculateBoundaryTimeForHalfDay(inTime int64) (beginTime, endTime int64) {
+
+	startHour := 0
+	endHour := 24
+
+	inputTime := time.UnixMilli(inTime)
+	hour := inputTime.Hour()
+	if (hour > 0) && (hour < 12) {
+		startHour = 0
+		endHour = 12
+	} else {
+		startHour = 12
+		endHour = 24
+	}
+
+	year, month, day := inputTime.Date()
+
+	secondsEastOfUTC := int((8 * time.Hour).Seconds())
+	beijingTimeZone := time.FixedZone("Beijing Time", secondsEastOfUTC)
+
+	beginTmp := time.Date(year, month, day, startHour, 0, 0, 0, beijingTimeZone)
+	endTmp := time.Date(year, month, day, endHour, 0, 0, 0, beijingTimeZone)
+
+	beginTime = beginTmp.UnixMilli()
+	endTime = endTmp.UnixMilli()
+
+	return
+}
