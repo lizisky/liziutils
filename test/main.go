@@ -3,13 +3,18 @@ package main
 import (
 	"fmt"
 	"math/big"
+	"time"
 
+	"github.com/liziblockchain/liziutils/timeUtil"
 	"github.com/liziblockchain/liziutils/utils"
 )
 
 func main() {
 	// tryBigIntJson()
-	tryCompress()
+	// tryCompress()
+	// trytime()
+
+	test_validator()
 }
 
 func generalTesting() {
@@ -18,7 +23,7 @@ func generalTesting() {
 
 	fmt.Println("info:", fn, tmp)
 
-	fmt.Println("now:", utils.GetTimestamp13())
+	fmt.Println("now:", timeUtil.GetTimestampMillsecond())
 
 	email := "abc@gmail.com"
 	fmt.Println("is valid email:", utils.IsValidEmailAddr(email))
@@ -32,7 +37,7 @@ func tryBigIntJson() {
 	}
 
 	btc := token{
-		Time:    utils.GetTimestamp13(),
+		Time:    timeUtil.GetTimestampMillsecond(),
 		Balance: big.NewInt(1234),
 	}
 
@@ -48,5 +53,14 @@ func tryCompress() {
 
 	decom := utils.DeCompress(result)
 	fmt.Println("de-compress: original:", len(result), "---result:", len(decom))
+
+}
+
+func trytime() {
+
+	curtime := time.Now().UnixMilli()
+	timeUtil.CalculateStartBoundaryTimeForHalfDay(curtime)
+
+	timeUtil.CalculateStartBoundaryTimeForHalfDay(curtime - timeUtil.MillisecondPerDay/2)
 
 }
