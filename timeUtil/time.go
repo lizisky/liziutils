@@ -1,13 +1,7 @@
 package timeUtil
 
 import (
-	"fmt"
 	"time"
-)
-
-const (
-	DayDuration    = 24 * time.Hour
-	TwoDayDuration = 2 * DayDuration
 )
 
 func GetTimestampMillsecond() int64 {
@@ -96,7 +90,7 @@ func CalculateStartBoundaryTimeForHalfDay(inTime int64) (startBoundaryTime int64
 	// 	startHour = 12
 	// }
 	startHour := (hour / 12) * 12
-	fmt.Println("startHour:", startHour)
+	// fmt.Println("startHour:", startHour)
 
 	year, month, day := inputTime.Date()
 
