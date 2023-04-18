@@ -10,7 +10,7 @@ import (
 
 func GenerateRandomStr(inseed []byte) string {
 
-	lenBuf := generate_random_num_in_range(32, 64)
+	lenBuf := GenerateRandomNumInRange(32, 64)
 	buf := make([]byte, lenBuf)
 	io.ReadFull(rand.Reader, buf)
 
@@ -36,7 +36,7 @@ func GenerateRandomStr(inseed []byte) string {
 // 	return base64.URLEncoding.EncodeToString(b)
 // }
 
-func generate_random_num_in_range(min, max int) uint32 {
+func GenerateRandomNumInRange(min, max int) uint32 {
 	if min < 1 {
 		min = 1
 	}
