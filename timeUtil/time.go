@@ -13,7 +13,7 @@ func IsNextDay(last, cur int64) bool {
 	lastDate := GetDayStart(last)
 	curDate := GetDayStart(cur)
 	duration := curDate.Sub(lastDate)
-	if (duration >= DayDuration) && (TwoDayDuration > duration) {
+	if (duration >= DayDuration) && (TwoDaysDuration > duration) {
 		return true
 	} else {
 		return false

@@ -12,6 +12,6 @@ const (
 )
 
 const (
-	DayDuration    = 24 * time.Hour
-	TwoDayDuration = 2 * DayDuration
+	DayDuration     = 24 * time.Hour
+	TwoDaysDuration = 2 * DayDuration
 )

@@ -46,7 +46,7 @@ func GenerateRandomNumInRange(min, max int) uint32 {
 
 	for {
 		seed2 := time.Now().UnixNano()
-		mathrand.Seed(seed2)
+		mathrand.New(mathrand.NewSource(seed2))
 		random_num := mathrand.Uint32() % uint32(max)
 		if random_num >= uint32(min) {
 			return (random_num)

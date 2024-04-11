@@ -5,16 +5,16 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/liziblockchain/liziutils/timeUtil"
-	"github.com/liziblockchain/liziutils/utils"
+	"github.com/lizisky/liziutils/timeUtil"
+	"github.com/lizisky/liziutils/utils"
 )
 
 func main() {
 	// tryBigIntJson()
 	// tryCompress()
-	// trytime()
+	trytime()
 
-	test_validator()
+	// test_validator()
 }
 
 func generalTesting() {
@@ -61,6 +61,7 @@ func trytime() {
 	curtime := time.Now().UnixMilli()
 	timeUtil.CalculateStartBoundaryTimeForHalfDay(curtime)
 
-	timeUtil.CalculateStartBoundaryTimeForHalfDay(curtime - timeUtil.MillisecondPerDay/2)
+	result := timeUtil.CalculateStartBoundaryTimeForHalfDay(curtime - timeUtil.MillisecondPerDay/2)
 
+	fmt.Println(result)
 }

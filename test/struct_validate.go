@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/liziblockchain/liziutils/utils"
+	"github.com/lizisky/liziutils/utils"
 )
 
 func test_validator() {

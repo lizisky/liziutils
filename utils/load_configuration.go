@@ -2,7 +2,6 @@ package utils
 
 import (
 	"errors"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -52,7 +51,7 @@ func LoadConfigurationFromYamlFile(data_dir_from_cli_arg, data_dir_name, cfg_fil
 }
 
 func loadConfigFromYamlFile(cfgFilename string, out interface{}) error {
-	cfgContent, err := ioutil.ReadFile(cfgFilename)
+	cfgContent, err := os.ReadFile(cfgFilename)
 	if err != nil {
 		return err
 	}
